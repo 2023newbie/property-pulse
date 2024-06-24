@@ -1,5 +1,17 @@
+'use client'
+
+import Hero from '@/components/hero';
+import HomeProperties from '@/components/home-properties';
+import InfoBoxes from '@/components/info-boxes';
+
 const HomePage = () => {
-    return <div>HomePage</div>;
+    return (
+        <>
+            <Hero />
+            <InfoBoxes />
+            <HomeProperties />
+        </>
+    );
 };
 
 export default HomePage;
