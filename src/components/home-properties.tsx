@@ -1,22 +1,13 @@
-'use client';
-
-import properties from '@/properties.json';
+import { fetchProperties } from '@/utils/requests';
 import PropertyCard from './property-card';
-import { useEffect, useState } from 'react';
 import Link from 'next/link';
 
-const HomeProperties = () => {
-    const [currentProperties, setCurrentProperties] = useState<
-        typeof properties
-    >([]);
+const HomeProperties = async () => {
+    const properties = (await fetchProperties()) as any[];
 
-    useEffect(() => {
-        setCurrentProperties(() => {
-            return properties
-                .sort(() => Math.random() - Math.random())
-                .slice(0, 3);
-        });
-    }, []);
+    const currentProperties = properties
+        .sort(() => Math.random() - Math.random())
+        .slice(0, 3);
 
     return (
         <>
@@ -40,11 +31,11 @@ const HomeProperties = () => {
                 </div>
             </section>
 
-            <section className="m-auto max-w-lg my-10 px-6">
+            <section className='m-auto max-w-lg my-10 px-6'>
                 <Link
-                    href="/properties"
-                    className="block bg-black text-white text-center py-4 px-6 rounded-xl hover:bg-gray-700"
-                    >View All Properties
+                    href='/properties'
+                    className='block bg-black text-white text-center py-4 px-6 rounded-xl hover:bg-gray-700'>
+                    View All Properties
                 </Link>
             </section>
         </>

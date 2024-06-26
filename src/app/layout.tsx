@@ -2,6 +2,9 @@ import { ReactNode } from 'react';
 import '@/assets/styles/globals.css';
 import Navbar from '@/components/navbar';
 import Footer from '@/components/footer';
+import AuthProvider from '@/components/auth-provider';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 export const metadata = {
     title: 'PropertyPulse | Find The Perfect Rental',
@@ -11,13 +14,16 @@ export const metadata = {
 
 const MainLayout = ({ children }: { children: ReactNode }) => {
     return (
-        <html lang='en'>
-            <body>
-                <Navbar />
-                {children}
-                <Footer />
-            </body>
-        </html>
+        <AuthProvider>
+            <html lang='en'>
+                <body>
+                    <Navbar />
+                    {children}
+                    <Footer />
+                    <ToastContainer />
+                </body>
+            </html>
+        </AuthProvider>
     );
 };
 
