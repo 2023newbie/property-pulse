@@ -1,12 +1,9 @@
 import connectDB from "@/config/database"
 import Property from "@/models/Property"
-import { NextApiRequest } from "next"
 import { NextRequest } from "next/server"
-import { getSessionUser } from "@/utils/getSessionUser"
-import cloudinary from "@/config/cloudinary"
 
 // GET /api/properties/user/:userId
-export const GET = async (request: NextApiRequest, { params }: { params: any }) => {
+export const GET = async (request: NextRequest, { params }: { params: any }) => {
     try {
         await connectDB()
 
