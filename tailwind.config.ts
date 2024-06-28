@@ -19,6 +19,9 @@ const config: Config = {
       },
       gridTemplateColumns: {
         '70/30': '70% 28%'
+      },
+      minHeight: {
+        'fullBody': 'calc(100vh - 80px - 64px)'
       }
     },
   },

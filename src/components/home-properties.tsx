@@ -3,15 +3,15 @@ import PropertyCard from './property-card';
 import Link from 'next/link';
 
 const HomeProperties = async () => {
-    const properties = (await fetchProperties()) as any[];
+    const result = (await fetchProperties()) as any;
 
-    const currentProperties = properties
+    const currentProperties = result.properties
         .sort(() => Math.random() - Math.random())
         .slice(0, 3);
 
     return (
         <>
-            <section className='px-4 py-6'>
+            <section className='px-4 py-6 max-w-7xl mx-auto'>
                 <div className='container-xl lg:container m-auto'>
                     <h2 className='text-3xl font-bold text-blue-500 mb-6 text-center'>
                         Recent Properties
@@ -20,7 +20,7 @@ const HomeProperties = async () => {
                         {currentProperties.length === 0 ? (
                             <p>No Properties Found.</p>
                         ) : (
-                            currentProperties.map(property => (
+                            currentProperties.map((property: any) => (
                                 <PropertyCard
                                     key={property._id}
                                     property={property}

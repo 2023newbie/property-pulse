@@ -1,3 +1,4 @@
+import FeaturedProperties from '@/components/featured-properties';
 import Hero from '@/components/hero';
 import HomeProperties from '@/components/home-properties';
 import InfoBoxes from '@/components/info-boxes';
@@ -7,6 +8,7 @@ const HomePage = async () => {
         <>
             <Hero />
             <InfoBoxes />
+            <FeaturedProperties />
             <HomeProperties />
         </>
     );

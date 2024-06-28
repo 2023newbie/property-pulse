@@ -1,18 +1,23 @@
 import connectDB from "@/config/database"
 import Property from "@/models/Property"
-import { NextApiRequest } from "next"
 import { NextRequest } from "next/server"
 import { getSessionUser } from "@/utils/getSessionUser"
 import cloudinary from "@/config/cloudinary"
 
 // GET /api/properties
-export const GET = async (request: NextApiRequest) => {
+export const GET = async (request: NextRequest) => {
     try {
         await connectDB()
 
-        const properties = await Property.find({})
+        const page = request.nextUrl.searchParams.get('page') || 1
+        const pageSize = request.nextUrl.searchParams.get('pageSize') || 3
 
-        return new Response(JSON.stringify(properties), { status: 200 })
+        const skip = (Number(page) - 1) * Number(pageSize)
+
+        const total = await Property.countDocuments({})
+        const properties = await Property.find({}).skip(skip).limit(Number(pageSize))
+
+        return new Response(JSON.stringify({ total, properties }), { status: 200 })
     } catch (error) {
         console.log(error)
         return new Response('Something went wrong!', { status: 500 })
