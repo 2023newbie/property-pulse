@@ -3,7 +3,6 @@ import FeaturedProperty from './featured-property';
 
 const FeaturedProperties = async () => {
     const properties = await fetchProperties({ showFeatured: true });
-    console.log(properties)
 
     return (
         <section className='bg-blue-50 px-4 pt-6 pb-10'>

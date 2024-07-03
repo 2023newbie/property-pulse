@@ -1,8 +1,6 @@
 import connectDB from "@/config/database"
 import Property from "@/models/Property"
 import { NextRequest } from "next/server"
-import { getSessionUser } from "@/utils/getSessionUser"
-import cloudinary from "@/config/cloudinary"
 
 // GET /api/properties
 export const GET = async (request: NextRequest) => {

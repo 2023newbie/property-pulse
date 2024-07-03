@@ -5,18 +5,16 @@ async function fetchProperties({ showFeatured = false } = {}) {
     // handle the case where the domain is not available yet
     if (!apiDomain) return [];
 
-    try {
-        const res = await fetch(`${apiDomain}/properties${showFeatured ? '/featured' : ''}`, {
-            cache: 'no-store'
-        });
+    const res = await fetch(
+        `${apiDomain}/properties${showFeatured ? '/featured' : ''}`,
+        {
+            cache: 'no-store',
+        }
+    );
 
-        if (!res.ok) throw new Error('Failed to fetch data.');
+    if (!res.ok) return [];
 
-        return await res.json();
-    } catch (error) {
-        console.log(error);
-        return [];
-    }
+    return await res.json();
 }
 
 // Fetch single property
@@ -24,18 +22,13 @@ async function fetchProperty(id: string) {
     // handle the case where the domain is not available yet
     if (!apiDomain) return null;
 
-    try {
-        const res = await fetch(`${apiDomain}/properties/${id}`, {
-            cache: 'no-store'
-        });
+    const res = await fetch(`${apiDomain}/properties/${id}`, {
+        cache: 'no-store',
+    });
 
-        if (!res.ok) throw new Error('Failed to fetch data.');
+    if (!res.ok) return [];
 
-        return res.json();
-    } catch (error) {
-        console.log(error);
-        return null;
-    }
+    return res.json();
 }
 
 export { fetchProperties, fetchProperty };

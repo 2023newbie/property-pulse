@@ -26,7 +26,7 @@ const Pagination = ({
             <span className='mx-2'>
                 Page {page} of {Math.ceil(total / Number(pageSize))}
             </span>
-            {Number(page) + 1 <= total / Number(pageSize) && (
+            {Number(page) + 1 <= Math.ceil(total / Number(pageSize)) && (
                 <Link
                     href={`${pathname}?page=${
                         Number(page) + 1

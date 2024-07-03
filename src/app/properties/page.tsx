@@ -14,7 +14,7 @@ const PropertiesPage = () => {
 
     const searchParams = useSearchParams();
     const page = searchParams.get('page') || 1;
-    const pageSize = searchParams.get('pageSize') || 3;
+    const pageSize = searchParams.get('pageSize') || 6;
 
     useEffect(() => {
         setLoading(true);
